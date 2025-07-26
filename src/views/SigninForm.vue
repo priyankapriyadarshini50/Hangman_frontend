@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import api from '@/config/axios';
 export default {
   
   name: "SigninForm",
@@ -28,12 +28,16 @@ export default {
   methods: {
     async userLoginSubmit(){
       try{
-        const res = await axios.post('api/users/login/', {
+        const res = await api.post('users/login/', {
         email : this.email,
         password : this.password,
       });
       console.log(res);
-      //this.$router.push('api/users/login/')
+      const userData = res.data.user;
+      this.$store.commit('setUser', userData);
+
+      // Navigate to userProfile or home page
+      this.$router.push('/profile/')
       }catch(err){
         console.log("Error Login:", err.response?.data || err.message);
       }
@@ -56,17 +60,5 @@ body {
 
 .form-signin .form-floating:focus-within {
   z-index: 2;
-}
-
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 </style>

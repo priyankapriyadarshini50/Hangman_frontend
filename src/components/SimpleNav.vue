@@ -5,7 +5,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <router-link to="/login" class="nav-link active" aria-current="page" >Login</router-link>
+                        <router-link to="/login" class="nav-link active" aria-current="page" >Login</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/logout" class="nav-link" aria-current="page" >Logout</router-link>
                     </li>
                 </ul>
             </div>

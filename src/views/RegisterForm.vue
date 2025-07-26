@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import api from '@/config/axios';
 export default {
   name: "RegisterForm",
   data(){
@@ -31,7 +31,7 @@ export default {
   methods: {
     async userSubmit(){
       try{
-        const resp = await axios.post('api/users/register/', {
+        const resp = await api.post('users/register/', {
           username : this.username,
           email : this.email,
           password : this.password,
